@@ -1,28 +1,26 @@
-import React, { Component } from "react";
-import logo from "./assets/imgs/logo.svg";
-import "./assets/css/App.scss";
+import React from "react";
+import { Switch } from "react-router";
+import { Provider } from "react-redux";
+import { renderRoutes } from "react-router-config";
+import { ConnectedRouter } from "connected-react-router";
+import { PersistGate } from "redux-persist/es/integration/react";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+import configureStore, { history } from "./redux/store";
+import routes from "./router";
+
+const { persistor, store } = configureStore(/* provide initial state if any */);
+
+const App = () => (
+  <Provider store={store}>
+    <PersistGate loading={<div />} persistor={persistor}>
+      <ConnectedRouter history={history}>
+        <>
+          {/* your usual react-router v4 routing */}
+          <Switch>{renderRoutes(routes)}</Switch>
+        </>
+      </ConnectedRouter>
+    </PersistGate>
+  </Provider>
+);
 
 export default App;

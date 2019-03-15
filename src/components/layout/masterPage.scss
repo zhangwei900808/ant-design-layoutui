@@ -1,0 +1,30 @@
+.master-page-container {
+  .holder-content {
+    padding: 10px;
+  }
+  .holder-search {
+    padding: 10px 16px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    .h-s-left {
+    }
+    .h-s-right {
+    }
+  }
+  .holder-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    .h-t-left {
+    }
+    .h-t-right {
+      margin-right: 16px;
+    }
+  }
+  .ant-page-header {
+    padding: 16px;
+  }
+}
