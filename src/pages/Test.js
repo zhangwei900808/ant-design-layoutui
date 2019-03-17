@@ -159,7 +159,7 @@ class Test extends Component {
             bordered
             columns={columns}
             dataSource={data}
-            pagination={{ size: "" }}
+            pagination={{ size: "default" }}
           />
         </MasterPage>
       </div>

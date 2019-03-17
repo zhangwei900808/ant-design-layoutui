@@ -1,8 +1,14 @@
 import Index from "../pages/Index";
 import Test from "../pages/Test";
 import LayoutPage from "../components/layout/LayoutPage";
+import Login from "../pages/Login";
 
 const routes = [
+  {
+    component: Login,
+    exact: true,
+    path: "/login"
+  },
   {
     component: LayoutPage,
     routes: [
@@ -13,7 +19,7 @@ const routes = [
       },
       {
         path: "/test",
-        title: "sss",
+        title: "测试",
         component: Test
       }
     ]

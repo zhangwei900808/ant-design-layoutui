@@ -91,7 +91,13 @@ class Index extends Component {
     const { route } = this.props;
     return (
       <div>
-        <Table size="small" columns={columns} dataSource={data} />
+        <Table
+          size="small"
+          bordered
+          columns={columns}
+          dataSource={data}
+          pagination={{ size: "default" }}
+        />
       </div>
     );
   }

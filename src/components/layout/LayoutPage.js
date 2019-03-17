@@ -13,6 +13,7 @@ import "./layoutPage.scss";
 import HeaderNav from "./HeaderNav";
 const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
+
 class LayoutPage extends Component {
   state = {
     collapsed: false,
@@ -35,13 +36,18 @@ class LayoutPage extends Component {
       this.props.history.push("/test");
     }
   };
+  clickDropdownMenu = () => {
+    this.props.history.push("/login");
+  };
   render() {
     const { route } = this.props;
+    console.log("route", route);
+
     const ddMenu = (
       <Menu
-        mode="horizontal"
         defaultSelectedKeys={["2"]}
         style={{ lineHeight: "63px", fontSize: "14px" }}
+        onClick={this.clickDropdownMenu}
       >
         <Menu.Item key="6" style={{ width: "150px" }}>
           <Icon type="user" />
