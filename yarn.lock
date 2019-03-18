@@ -1130,9 +1130,9 @@ ant-design-palettes@^1.1.3:
   dependencies:
     tinycolor2 "^1.4.1"
 
-antd@^3.15.0:
-  version "3.15.0"
-  resolved "http://registry.npm.taobao.org/antd/download/antd-3.15.0.tgz#af187ce62902edf261d7251fc9105407527fad9d"
+antd@3.15.1:
+  version "3.15.1"
+  resolved "http://registry.npm.taobao.org/antd/download/antd-3.15.1.tgz#16ce63a2d84a88906e6ece934423871aa67395c5"
   dependencies:
     "@ant-design/icons" "~1.2.0"
     "@ant-design/icons-react" "~1.1.2"
@@ -2355,7 +2355,7 @@ copy-descriptor@^0.1.0:
 
 copy-to-clipboard@^3.0.8:
   version "3.0.8"
-  resolved "http://registry.npm.taobao.org/copy-to-clipboard/download/copy-to-clipboard-3.0.8.tgz#f4e82f4a8830dce4666b7eb8ded0c9bcc313aba9"
+  resolved "http://registry.npm.taobao.org/copy-to-clipboard/download/copy-to-clipboard-3.0.8.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fcopy-to-clipboard%2Fdownload%2Fcopy-to-clipboard-3.0.8.tgz#f4e82f4a8830dce4666b7eb8ded0c9bcc313aba9"
   dependencies:
     toggle-selection "^1.0.3"
 
@@ -7671,8 +7671,8 @@ rc-table@~6.4.0:
     warning "^3.0.0"
 
 rc-tabs@~9.6.0:
-  version "9.6.1"
-  resolved "http://registry.npm.taobao.org/rc-tabs/download/rc-tabs-9.6.1.tgz#e9426927d3f197003e3ca8e5eba5cd33b8b099db"
+  version "9.6.2"
+  resolved "http://registry.npm.taobao.org/rc-tabs/download/rc-tabs-9.6.2.tgz#a33652e252ff335874ad3d0c81cb598cbae5f881"
   dependencies:
     babel-runtime "6.x"
     classnames "2.x"
@@ -7702,8 +7702,8 @@ rc-tooltip@^3.7.0, rc-tooltip@~3.7.3:
     rc-trigger "^2.2.2"
 
 rc-tree-select@~2.6.0:
-  version "2.6.0"
-  resolved "http://registry.npm.taobao.org/rc-tree-select/download/rc-tree-select-2.6.0.tgz#8804a958422965f4cd28b6b599f3142542061b44"
+  version "2.6.1"
+  resolved "http://registry.npm.taobao.org/rc-tree-select/download/rc-tree-select-2.6.1.tgz#07c03ffa36d9dad3a515514eba37869b411c067a"
   dependencies:
     classnames "^2.2.1"
     dom-scroll-into-view "^1.2.1"

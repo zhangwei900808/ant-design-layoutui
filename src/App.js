@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch } from "react-router";
+import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { renderRoutes } from "react-router-config";
 import { ConnectedRouter } from "connected-react-router";
@@ -16,7 +17,10 @@ const App = () => (
       <ConnectedRouter history={history}>
         <>
           {/* your usual react-router v4 routing */}
-          <Switch>{renderRoutes(routes)}</Switch>
+          <Switch>
+            {renderRoutes(routes)}
+            <Router component={() => <div>df</div>} />
+          </Switch>
         </>
       </ConnectedRouter>
     </PersistGate>

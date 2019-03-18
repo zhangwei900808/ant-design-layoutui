@@ -20,11 +20,10 @@ import userAction from "../redux/actions/userAction";
 )
 class Index extends Component {
   componentDidMount() {
+    console.log(" props", this.props);
     this.props.getUsers();
   }
-  componentWillReceiveProps(nextProps) {
-    console.log("next props", nextProps);
-  }
+  componentWillReceiveProps(nextProps) {}
 
   render() {
     const columns = [

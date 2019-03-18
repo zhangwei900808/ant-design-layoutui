@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import { renderRoutes } from "react-router-config";
 import {
   Layout,
@@ -9,60 +10,84 @@ import {
   Dropdown,
   PageHeader
 } from "antd";
+import menus from "../../config/menu.config";
 import "./layoutPage.scss";
 import HeaderNav from "./HeaderNav";
+
 const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
 class LayoutPage extends Component {
-  state = {
-    collapsed: false,
-    title: "海云数据后台管理系统模板",
-    company: "Ant Design UI"
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      collapsed: false,
+      title: "海云数据后台管理系统模板",
+      company: "Ant Design UI",
+      logo:
+        "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+    };
+  }
 
   toggle = () => {
     this.setState({
       collapsed: !this.state.collapsed
     });
   };
-  clickMenu = ({ item, key, keyPath }) => {
-    console.log("item", item);
-    console.log("key", key);
-    console.log("keyPath", keyPath);
-    if (key == 1) {
-      this.props.history.push("/");
-    } else {
-      this.props.history.push("/test");
-    }
-  };
-  clickDropdownMenu = () => {
-    this.props.history.push("/login");
-  };
+
   render() {
     const { route } = this.props;
-    console.log("route", route);
+    const newMenu = menus.map(menu =>
+      menu.children && menu.children.length > 0 ? (
+        <SubMenu
+          key={menu.key}
+          title={
+            <div>
+              <Icon type={menu.icon} />
+              <span>{menu.name}</span>
+            </div>
+          }
+        >
+          {menu.children.map(children => (
+            <Menu.Item key={children.key}>
+              <NavLink to={children.path}>{children.name}</NavLink>
+            </Menu.Item>
+          ))}
+        </SubMenu>
+      ) : (
+        <Menu.Item key={menu.key}>
+          <NavLink to={menu.path}>
+            <Icon type={menu.icon} />
+            <span>{menu.name}</span>
+          </NavLink>
+        </Menu.Item>
+      )
+    );
 
     const ddMenu = (
-      <Menu
-        defaultSelectedKeys={["2"]}
-        style={{ lineHeight: "63px", fontSize: "14px" }}
-        onClick={this.clickDropdownMenu}
-      >
+      <Menu style={{ lineHeight: "63px", fontSize: "14px" }}>
         <Menu.Item key="6" style={{ width: "150px" }}>
-          <Icon type="user" />
-          <span>个人信息</span>
+          <NavLink to="/">
+            <Icon type="user" />
+            <span style={{ marginLeft: 8 }}>个人信息</span>
+          </NavLink>
         </Menu.Item>
         <Menu.Item key="99" style={{ width: "150px" }}>
-          <Icon type="setting" />
-          <span>设置</span>
+          <NavLink to="/">
+            <Icon type="setting" />
+            <span style={{ marginLeft: 8 }}>设置</span>
+          </NavLink>
         </Menu.Item>
         <Menu.Item key="9" style={{ width: "150px" }}>
-          <Icon type="logout" />
-          <span>退出登录</span>
+          <NavLink to="/login">
+            <Icon type="logout" />
+            <span style={{ marginLeft: 8 }}>退出登录</span>
+          </NavLink>
         </Menu.Item>
       </Menu>
     );
+
     return (
       <Layout className="layout-container">
         <Sider
@@ -75,11 +100,7 @@ class LayoutPage extends Component {
           className="sider-container"
         >
           <div className="logo">
-            <img
-              src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
-              width="32"
-              alt=""
-            />
+            <img src={this.state.logo} width="32" alt="" />
             {!this.state.collapsed ? (
               <span className="title">{this.state.company}</span>
             ) : (
@@ -92,55 +113,8 @@ class LayoutPage extends Component {
             mode="inline"
             className="sider-menu-container"
             inlineCollapsed={this.state.collapsed}
-            onClick={this.clickMenu}
           >
-            <Menu.Item key="1">
-              <Icon type="home" />
-              <span>首页</span>
-            </Menu.Item>
-            <Menu.Item key="19">
-              <Icon type="radar-chart" />
-              <span>综合态势</span>
-            </Menu.Item>
-            <SubMenu
-              key="sub2"
-              title={
-                <span>
-                  <Icon type="cluster" />
-                  <span>任务管理</span>
-                </span>
-              }
-            >
-              <Menu.Item key="6">任务监测</Menu.Item>
-              <Menu.Item key="8">任务列表</Menu.Item>
-              <Menu.Item key="9">集中控制</Menu.Item>
-            </SubMenu>
-
-            <SubMenu
-              key="sub3"
-              title={
-                <span>
-                  <Icon type="robot" />
-                  <span>指令官管理</span>
-                </span>
-              }
-            >
-              <Menu.Item key="11">任务列表</Menu.Item>
-              <Menu.Item key="12">设备管理</Menu.Item>
-            </SubMenu>
-            <SubMenu
-              key="sub1"
-              title={
-                <span>
-                  <Icon type="team" />
-                  <span>权限管理</span>
-                </span>
-              }
-            >
-              <Menu.Item key="3">用户管理</Menu.Item>
-              <Menu.Item key="4">角色管理</Menu.Item>
-              <Menu.Item key="5">菜单管理</Menu.Item>
-            </SubMenu>
+            {newMenu}
           </Menu>
         </Sider>
         <Layout className="layout-page-right-container">
