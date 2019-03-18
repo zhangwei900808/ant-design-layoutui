@@ -162,7 +162,7 @@ class LayoutPage extends Component {
               >
                 <div>
                   <Avatar
-                    size="small"
+                    size="default"
                     style={{ backgroundColor: "#87d068" }}
                     icon="user"
                   />

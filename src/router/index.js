@@ -1,7 +1,7 @@
 import Index from "../pages/Index";
 import Test from "../pages/Test";
 import LayoutPage from "../components/layout/LayoutPage";
-import Login from "../pages/Login";
+import Login from "../pages/login/Login";
 
 const routes = [
   {
