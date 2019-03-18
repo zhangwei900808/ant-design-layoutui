@@ -5,52 +5,53 @@ import { bindActionCreators } from "redux";
 import { DatePicker } from "antd";
 import LayoutPage from "../components/layout/LayoutPage";
 import { Table, Divider, Tag } from "antd";
+import userAction from "../redux/actions/userAction";
 
 @withRouter
 @connect(
-  null,
-  dispatch => bindActionCreators({}, dispatch)
+  ({ user }) => ({ user }),
+  dispatch =>
+    bindActionCreators(
+      {
+        getUsers: userAction.getUserList
+      },
+      dispatch
+    )
 )
 class Index extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.getUsers();
+  }
+  componentWillReceiveProps(nextProps) {
+    console.log("next props", nextProps);
+  }
 
   render() {
     const columns = [
       {
-        title: "Name",
+        title: "id",
+        dataIndex: "id",
+        key: "id"
+      },
+      {
+        title: "name",
         dataIndex: "name",
-        key: "name",
-        render: text => <a href="javascript:;">{text}</a>
+        key: "name"
       },
       {
-        title: "Age",
-        dataIndex: "age",
-        key: "age"
+        title: "email",
+        dataIndex: "email",
+        key: "email"
       },
       {
-        title: "Address",
-        dataIndex: "address",
-        key: "address"
+        title: "phone",
+        key: "phone",
+        dataIndex: "phone"
       },
       {
-        title: "Tags",
-        key: "tags",
-        dataIndex: "tags",
-        render: tags => (
-          <span>
-            {tags.map(tag => {
-              let color = tag.length > 5 ? "geekblue" : "green";
-              if (tag === "loser") {
-                color = "volcano";
-              }
-              return (
-                <Tag color={color} key={tag}>
-                  {tag.toUpperCase()}
-                </Tag>
-              );
-            })}
-          </span>
-        )
+        title: "website",
+        key: "website",
+        dataIndex: "website"
       },
       {
         title: "Action",
@@ -65,37 +66,14 @@ class Index extends Component {
       }
     ];
 
-    const data = [
-      {
-        key: "1",
-        name: "John Brown",
-        age: 32,
-        address: "New York No. 1 Lake Park",
-        tags: ["nice", "developer"]
-      },
-      {
-        key: "2",
-        name: "Jim Green",
-        age: 42,
-        address: "London No. 1 Lake Park",
-        tags: ["loser"]
-      },
-      {
-        key: "3",
-        name: "Joe Black",
-        age: 32,
-        address: "Sidney No. 1 Lake Park",
-        tags: ["cool", "teacher"]
-      }
-    ];
-    const { route } = this.props;
+    const { user } = this.props;
     return (
       <div>
         <Table
           size="small"
           bordered
           columns={columns}
-          dataSource={data}
+          dataSource={user.userList}
           pagination={{ size: "default" }}
         />
       </div>

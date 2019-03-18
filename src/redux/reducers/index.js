@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import { connectRouter } from "connected-react-router";
 // import visibilityFilter from './VisibilityFilter';
-// import todoReducer from "./todoReducer";
+import userReducer from "./userReducer";
 
 export default history =>
   combineReducers({
-    router: connectRouter(history)
-    // todos: todoReducer
+    router: connectRouter(history),
+    user: userReducer
   });
