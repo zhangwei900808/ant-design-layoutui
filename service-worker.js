@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/ant-design-layoutui/precache-manifest.02c1f3cd41b7db8f61dcfe8da380025b.js"
+  "/ant-design-layoutui/precache-manifest.64db19a83b38c55cd2f8c61bbdac1588.js"
 );
 
 workbox.clientsClaim();
