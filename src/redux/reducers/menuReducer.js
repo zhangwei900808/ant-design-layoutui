@@ -14,7 +14,7 @@ const menuReducer = handleActions(
       const { keyPath } = action.payload;
       let index = keyPath[0];
       let subIndex = null;
-      if (keyPath.length == 2) {
+      if (keyPath.length === 2) {
         subIndex = keyPath[1];
       }
       return {

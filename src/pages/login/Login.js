@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Form, Icon, Input, Button, Checkbox } from "antd";
+import { Form, Icon, Input, Button } from "antd";
 import "./login.scss";
 import LOGIN from "../../assets/imgs/logo.png";
-import BG from "../../assets/imgs/right.png";
 
 class Login extends Component {
   componentDidMount() {

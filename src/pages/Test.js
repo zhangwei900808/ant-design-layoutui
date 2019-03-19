@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Table, Divider, Tag, Button, DatePicker, Input } from "antd";
 import MasterPage from "../components/layout/MasterPage";
-const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
+const { RangePicker } = DatePicker;
 
 class Test extends Component {
   render() {
@@ -9,8 +9,7 @@ class Test extends Component {
       {
         title: "Name",
         dataIndex: "name",
-        key: "name",
-        render: text => <a href="javascript:;">{text}</a>
+        key: "name"
       },
       {
         title: "Age",
@@ -47,9 +46,9 @@ class Test extends Component {
         key: "action",
         render: (text, record) => (
           <span>
-            <a href="javascript:;">Invite {record.name}</a>
+            <a href="/">Invite {record.name}</a>
             <Divider type="vertical" />
-            <a href="javascript:;">Delete</a>
+            <a href="/">Delete</a>
           </span>
         )
       }

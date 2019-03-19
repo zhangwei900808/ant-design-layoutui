@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { bindActionCreators } from "redux";
-import { DatePicker } from "antd";
-import LayoutPage from "../components/layout/LayoutPage";
-import { Table, Divider, Tag } from "antd";
+import { Table, Divider } from "antd";
 import userAction from "../redux/actions/userAction";
 
 @withRouter

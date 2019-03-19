@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { PageHeader } from "antd";
-import { If, Then, Else, When, Unless } from "react-if";
+import { If, Then } from "react-if";
 import "./masterPage.scss";
 
 class MasterPage extends Component {

@@ -3,21 +3,13 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { renderRoutes } from "react-router-config";
-import {
-  Layout,
-  Menu,
-  Breadcrumb,
-  Icon,
-  Avatar,
-  Dropdown,
-  PageHeader
-} from "antd";
+import { Layout, Menu, Icon, Avatar, Dropdown } from "antd";
 import menus from "../../config/menu.config";
 import BreadCrumbPage from "./BreadCrumbPage";
 import menuAction from "../../redux/actions/menuAction";
 import "./layoutPage.scss";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
 @connect(
