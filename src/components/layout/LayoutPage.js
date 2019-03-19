@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { renderRoutes } from "react-router-config";
 import { Layout, Menu, Icon, Avatar, Dropdown } from "antd";
-import menus from "../../config/menu.config";
+import routerConfig from "../../config/router.config";
 import BreadCrumbPage from "./BreadCrumbPage";
 import menuAction from "../../redux/actions/menuAction";
 import "./layoutPage.scss";
@@ -47,28 +47,28 @@ class LayoutPage extends Component {
 
   render() {
     const { route, menuReducer } = this.props;
-    const newMenu = menus.map(menu =>
-      menu.children && menu.children.length > 0 ? (
+    const newMenu = routerConfig.map(routeData =>
+      routeData.routes && routeData.routes.length > 0 ? (
         <SubMenu
-          key={menu.key}
+          key={routeData.key}
           title={
             <div>
-              <Icon type={menu.icon} />
-              <span>{menu.name}</span>
+              <Icon type={routeData.icon} />
+              <span>{routeData.name}</span>
             </div>
           }
         >
-          {menu.children.map(children => (
+          {routeData.routes.map(children => (
             <Menu.Item key={children.key}>
               <NavLink to={children.path}>{children.name}</NavLink>
             </Menu.Item>
           ))}
         </SubMenu>
       ) : (
-        <Menu.Item key={menu.key}>
-          <NavLink to={menu.path}>
-            <Icon type={menu.icon} />
-            <span>{menu.name}</span>
+        <Menu.Item key={routeData.key}>
+          <NavLink to={routeData.path}>
+            <Icon type={routeData.icon} />
+            <span>{routeData.name}</span>
           </NavLink>
         </Menu.Item>
       )

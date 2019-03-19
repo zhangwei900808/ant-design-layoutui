@@ -1,8 +1,11 @@
+import RouterView from "../components/common/RouterView";
 import Index from "../pages/Index";
 import Test from "../pages/Test";
 
-//菜单是不变的，但是不同的用户权限显示的菜单是变的
-const menus = [
+//注：菜单和路由都是基于该路由数据生成
+//菜单可以不全部展示在页面上(隐藏)，但路由必须全部要定义
+//后期可以加入权限控制
+const routerConfig = [
   {
     key: "1",
     name: "首页",
@@ -22,23 +25,33 @@ const menus = [
     key: "3",
     name: "作业管理",
     icon: "cluster",
-    children: [
+    path: "/work",
+    component: RouterView,
+    routes: [
       {
         key: "3-1",
         name: "作业监测",
-        path: "/",
-        component: Index
+        path: "/work/monitor",
+        component: Index,
+        routes: [
+          {
+            key: "3-1-1",
+            name: "添加作业",
+            path: "/work/monitor/add",
+            component: Test
+          }
+        ]
       },
       {
         key: "3-2",
         name: "作业列表",
-        path: "/test",
+        path: "/work/list",
         component: Test
       },
       {
         key: "3-3",
         name: "集中控制",
-        path: "/",
+        path: "/work/control",
         component: Index
       }
     ]
@@ -47,17 +60,20 @@ const menus = [
     key: "4",
     name: "指令官管理",
     icon: "robot",
-    children: [
+    path: "/command",
+    component: RouterView,
+    routes: [
       {
         key: "4-1",
         name: "任务列表",
-        path: "/test",
+        path: "/command/test",
         component: Test
       },
       {
         key: "4-2",
         name: "设备管理",
-        path: "/iii"
+        path: "/command/device",
+        component: Index
       }
     ]
   },
@@ -65,33 +81,29 @@ const menus = [
     key: "5",
     name: "权限管理",
     icon: "team",
-    children: [
+    path: "/role",
+    component: RouterView,
+    routes: [
       {
         key: "5-0",
         name: "区域管理",
-        path: "/test",
+        path: "/role/area",
         component: Test
       },
       {
         key: "5-1",
         name: "用户管理",
-        path: "/",
+        path: "/role/user",
         component: Index
       },
       {
         key: "5-2",
         name: "角色管理",
-        path: "/test",
+        path: "/role/role",
         component: Test
-      },
-      {
-        key: "5-3",
-        name: "菜单管理",
-        path: "/",
-        component: Index
       }
     ]
   }
 ];
 
-export default menus;
+export default routerConfig;
