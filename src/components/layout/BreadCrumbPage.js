@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Breadcrumb, Icon } from "antd";
-import "./headerNav.scss";
+import "./breadCrumbPage.scss";
 
-class HeaderNav extends Component {
+class BreadCrumbPage extends Component {
   render() {
     return (
       <div className="header-nav-container">
@@ -20,4 +20,4 @@ class HeaderNav extends Component {
   }
 }
 
-export default HeaderNav;
+export default BreadCrumbPage;

@@ -9,7 +9,7 @@ import userAction from "../redux/actions/userAction";
 
 @withRouter
 @connect(
-  ({ user }) => ({ user }),
+  ({ userReducer }) => ({ userReducer }),
   dispatch =>
     bindActionCreators(
       {
@@ -65,14 +65,14 @@ class Index extends Component {
       }
     ];
 
-    const { user } = this.props;
+    const { userReducer } = this.props;
     return (
       <div>
         <Table
           size="small"
           bordered
           columns={columns}
-          dataSource={user.userList}
+          dataSource={userReducer.userList}
           pagination={{ size: "default" }}
         />
       </div>

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { renderRoutes } from "react-router-config";
 import {
@@ -11,12 +13,23 @@ import {
   PageHeader
 } from "antd";
 import menus from "../../config/menu.config";
+import BreadCrumbPage from "./BreadCrumbPage";
+import menuAction from "../../redux/actions/menuAction";
 import "./layoutPage.scss";
-import HeaderNav from "./HeaderNav";
 
 const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
+@connect(
+  ({ menuReducer }) => ({ menuReducer }),
+  dispatch =>
+    bindActionCreators(
+      {
+        saveMenuIndex: menuAction.saveMenuIndex
+      },
+      dispatch
+    )
+)
 class LayoutPage extends Component {
   constructor(props) {
     super(props);
@@ -36,8 +49,12 @@ class LayoutPage extends Component {
     });
   };
 
+  clickSidebarMenu = ({ item, key, keyPath }) => {
+    this.props.saveMenuIndex(keyPath);
+  };
+
   render() {
-    const { route } = this.props;
+    const { route, menuReducer } = this.props;
     const newMenu = menus.map(menu =>
       menu.children && menu.children.length > 0 ? (
         <SubMenu
@@ -109,10 +126,12 @@ class LayoutPage extends Component {
           </div>
           <Menu
             theme="dark"
-            defaultSelectedKeys={["1"]}
+            defaultSelectedKeys={[menuReducer.index]}
+            defaultOpenKeys={[menuReducer.subIndex]}
             mode="inline"
             className="sider-menu-container"
             inlineCollapsed={this.state.collapsed}
+            onClick={this.clickSidebarMenu}
           >
             {newMenu}
           </Menu>
@@ -145,7 +164,7 @@ class LayoutPage extends Component {
               </Dropdown>
             </div>
           </Header>
-          <HeaderNav />
+          <BreadCrumbPage />
           <Content className="layout-page-right-content">
             {/**类似vue里面的router-view */}
             {renderRoutes(route.routes)}
