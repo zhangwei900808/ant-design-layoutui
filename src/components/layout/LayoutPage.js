@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { renderRoutes } from "react-router-config";
+import { NavLink, withRouter } from "react-router-dom";
+import { renderRoutes, matchRoutes } from "react-router-config";
 import { Layout, Menu, Icon, Avatar, Dropdown } from "antd";
+import baseConfig from "../../config/base.config";
 import routerConfig from "../../config/router.config";
 import BreadCrumbPage from "./BreadCrumbPage";
 import menuAction from "../../redux/actions/menuAction";
@@ -12,6 +13,7 @@ import "./layoutPage.scss";
 const { Header, Content, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
+@withRouter
 @connect(
   ({ menuReducer }) => ({ menuReducer }),
   dispatch =>
@@ -27,11 +29,7 @@ class LayoutPage extends Component {
     super(props);
 
     this.state = {
-      collapsed: false,
-      title: "海云数据后台管理系统模板",
-      company: "Ant Design UI",
-      logo:
-        "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+      collapsed: false
     };
   }
 
@@ -44,9 +42,30 @@ class LayoutPage extends Component {
   clickSidebarMenu = ({ item, key, keyPath }) => {
     this.props.saveMenuIndex(keyPath);
   };
+  clickDropdownMenu = ({ item, key, keyPath }) => {
+    this.props.history.push({
+      pathname: "/work/monitor/add",
+      state: {
+        key: key
+      }
+    });
+  };
 
+  componentDidMount() {
+    // const branch = matchRoutes(routes, "/child/23");
+    // console.log("branch", branch);
+  }
+  // componentWillReceiveProps(nextProps) {
+  //   const navigated = nextProps.location !== this.props.location;
+  //   const { routes } = this.props;
+  //   console.log("navigated", navigated);
+  //   console.log("routes", routes);
+  // }
   render() {
     const { route, menuReducer } = this.props;
+    // console.log('route', route);
+    console.log("menuReducer", menuReducer);
+
     const newMenu = routerConfig.map(routeData =>
       routeData.routes && routeData.routes.length > 0 ? (
         <SubMenu
@@ -76,19 +95,19 @@ class LayoutPage extends Component {
 
     const ddMenu = (
       <Menu style={{ lineHeight: "63px", fontSize: "14px" }}>
-        <Menu.Item key="6" style={{ width: "150px" }}>
+        <Menu.Item key="3-1-1" style={{ width: "150px" }}>
           <NavLink to="/">
             <Icon type="user" />
             <span style={{ marginLeft: 8 }}>个人信息</span>
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="99" style={{ width: "150px" }}>
+        <Menu.Item key="dm-setting" style={{ width: "150px" }}>
           <NavLink to="/">
             <Icon type="setting" />
             <span style={{ marginLeft: 8 }}>设置</span>
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="9" style={{ width: "150px" }}>
+        <Menu.Item key="0" style={{ width: "150px" }}>
           <NavLink to="/login">
             <Icon type="logout" />
             <span style={{ marginLeft: 8 }}>退出登录</span>
@@ -109,9 +128,9 @@ class LayoutPage extends Component {
           className="sider-container"
         >
           <div className="logo">
-            <img src={this.state.logo} width="32" alt="" />
+            <img src={baseConfig.logo} width="32" alt="" />
             {!this.state.collapsed ? (
-              <span className="title">{this.state.company}</span>
+              <span className="title">{baseConfig.company}</span>
             ) : (
               ""
             )}
@@ -136,7 +155,7 @@ class LayoutPage extends Component {
                 type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
                 onClick={this.toggle}
               />
-              <span>{this.state.title}</span>
+              <span>{baseConfig.title}</span>
             </div>
             <div className="right-header-right">
               {/* <div>通知</div> */}
@@ -156,7 +175,7 @@ class LayoutPage extends Component {
               </Dropdown>
             </div>
           </Header>
-          <BreadCrumbPage />
+          {/* <BreadCrumbPage route={route} /> */}
           <Content className="layout-page-right-content">
             {/**类似vue里面的router-view */}
             {renderRoutes(route.routes)}

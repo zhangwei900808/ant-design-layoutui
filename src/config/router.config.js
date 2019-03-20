@@ -99,7 +99,7 @@ const routerConfig = [
       {
         key: "5-2",
         name: "角色管理",
-        path: "/role/role",
+        path: "/role/roleManage",
         component: Test
       }
     ]

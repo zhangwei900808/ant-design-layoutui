@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { Table, Divider } from "antd";
 import userAction from "../redux/actions/userAction";
+import BreadCrumbPage from "../components/layout/BreadCrumbPage";
 
 @withRouter
 @connect(

@@ -9,8 +9,6 @@ const initState = {
 const menuReducer = handleActions(
   {
     [menuTypes.SAVE_MENU_INDEX]: (state, action) => {
-      console.log("aciton=", action);
-
       const { keyPath } = action.payload;
       let index = keyPath[0];
       let subIndex = null;
