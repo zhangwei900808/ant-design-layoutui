@@ -119,31 +119,29 @@ class Test extends Component {
         tags: ["cool", "teacher"]
       }
     ];
-    const searchN = (
-      <div>
-        <span>开始结束时间：</span>
-        <RangePicker placeholder={["开始时间", "结束时间"]} />
-        <span style={{ marginLeft: 10 }}>用户名：</span>
-        <Input placeholder="请输入用户名" style={{ width: 150 }} />
-        <Button icon="search" type="primary" style={{ marginLeft: 10 }}>
-          查询
-        </Button>
-      </div>
-    );
 
     return (
       <div>
         <MasterPage
           title="综合态势"
           subTitle="子标题"
+          onBack={() => {
+            this.props.history.push("/");
+          }}
           topRight={
             <Button icon="plus" type="primary">
               添加
             </Button>
           }
-          searchLeft={searchN}
-          searchRight={
+          search={
             <div>
+              <span>开始结束时间：</span>
+              <RangePicker placeholder={["开始时间", "结束时间"]} />
+              <span style={{ marginLeft: 10 }}>用户名：</span>
+              <Input placeholder="请输入用户名" style={{ width: 150 }} />
+              <Button icon="search" type="primary" style={{ marginLeft: 10 }}>
+                查询
+              </Button>
               <Button icon="edit" type="default">
                 编辑
               </Button>
@@ -153,13 +151,7 @@ class Test extends Component {
             </div>
           }
         >
-          <Table
-            size="small"
-            bordered
-            columns={columns}
-            dataSource={data}
-            pagination={{ size: "default" }}
-          />
+          <Table size="small" bordered columns={columns} dataSource={data} pagination={{ size: "default" }} />
         </MasterPage>
       </div>
     );

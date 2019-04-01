@@ -1,14 +1,14 @@
 import { handleActions } from "redux-actions";
-import { menuTypes } from "../actions/menuAction";
+import { sideMenuTypes } from "../actions/sideMenuAction";
 
 const initState = {
   index: "1",
   subIndex: ""
 };
 
-const menuReducer = handleActions(
+const sideMenuReducer = handleActions(
   {
-    [menuTypes.SAVE_MENU_INDEX]: (state, action) => {
+    [sideMenuTypes.SAVE_SIDE_MENU_INDEX]: (state, action) => {
       const { keyPath } = action.payload;
       let index = keyPath[0];
       let subIndex = null;
@@ -25,4 +25,4 @@ const menuReducer = handleActions(
   initState
 );
 
-export default menuReducer;
+export default sideMenuReducer;

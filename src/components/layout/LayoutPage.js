@@ -7,7 +7,7 @@ import { Layout, Menu, Icon, Avatar, Dropdown } from "antd";
 import baseConfig from "../../config/base.config";
 import routerConfig from "../../config/router.config";
 import BreadCrumbPage from "./BreadCrumbPage";
-import menuAction from "../../redux/actions/menuAction";
+import sideMenuAction from "../../redux/actions/sideMenuAction";
 import "./layoutPage.scss";
 
 const { Header, Content, Sider } = Layout;
@@ -15,11 +15,11 @@ const SubMenu = Menu.SubMenu;
 
 @withRouter
 @connect(
-  ({ menuReducer }) => ({ menuReducer }),
+  ({ sideMenuReducer }) => ({ sideMenuReducer }),
   dispatch =>
     bindActionCreators(
       {
-        saveMenuIndex: menuAction.saveMenuIndex
+        saveMenuIndex: sideMenuAction.saveSideMenuIndex
       },
       dispatch
     )
@@ -62,9 +62,8 @@ class LayoutPage extends Component {
   //   console.log("routes", routes);
   // }
   render() {
-    const { route, menuReducer } = this.props;
+    const { route, sideMenuReducer } = this.props;
     // console.log('route', route);
-    console.log("menuReducer", menuReducer);
 
     const newMenu = routerConfig.map(routeData =>
       routeData.routes && routeData.routes.length > 0 ? (
@@ -118,27 +117,15 @@ class LayoutPage extends Component {
 
     return (
       <Layout className="layout-container">
-        <Sider
-          theme="dark"
-          trigger={null}
-          collapsible
-          collapsed={this.state.collapsed}
-          width={250}
-          breakpoint="lg"
-          className="sider-container"
-        >
+        <Sider theme="dark" trigger={null} collapsible collapsed={this.state.collapsed} width={250} breakpoint="lg" className="sider-container">
           <div className="logo">
             <img src={baseConfig.logo} width="32" alt="" />
-            {!this.state.collapsed ? (
-              <span className="title">{baseConfig.company}</span>
-            ) : (
-              ""
-            )}
+            {!this.state.collapsed ? <span className="title">{baseConfig.company}</span> : ""}
           </div>
           <Menu
             theme="dark"
-            defaultSelectedKeys={[menuReducer.index]}
-            defaultOpenKeys={[menuReducer.subIndex]}
+            defaultSelectedKeys={[sideMenuReducer.index]}
+            defaultOpenKeys={[sideMenuReducer.subIndex]}
             mode="inline"
             className="sider-menu-container"
             inlineCollapsed={this.state.collapsed}
@@ -150,26 +137,14 @@ class LayoutPage extends Component {
         <Layout className="layout-page-right-container">
           <Header className="right-header">
             <div className="right-header-left">
-              <Icon
-                className="trigger"
-                type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
-                onClick={this.toggle}
-              />
+              <Icon className="trigger" type={this.state.collapsed ? "menu-unfold" : "menu-fold"} onClick={this.toggle} />
               <span>{baseConfig.title}</span>
             </div>
             <div className="right-header-right">
               {/* <div>通知</div> */}
-              <Dropdown
-                overlay={ddMenu}
-                placement="bottomRight"
-                className="right-header-right-dropdown"
-              >
+              <Dropdown overlay={ddMenu} placement="bottomRight" className="right-header-right-dropdown">
                 <div>
-                  <Avatar
-                    size="default"
-                    style={{ backgroundColor: "#87d068" }}
-                    icon="user"
-                  />
+                  <Avatar size="default" style={{ backgroundColor: "#87d068" }} icon="user" />
                   <span style={{ marginLeft: 8 }}>zhangwei</span>
                 </div>
               </Dropdown>
