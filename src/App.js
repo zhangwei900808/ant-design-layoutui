@@ -18,9 +18,9 @@ const App = () => (
         <>
           {/* 解决github gh-pages发布必须以Hash浏览否则history模式就会报错问题，
           如果想使用history模式去掉下面的HashRouter即可 */}
-          {/* <HashRouter> */}
-          <Switch>{renderRoutes(routes)}</Switch>
-          {/* </HashRouter> */}
+          <HashRouter>
+            <Switch>{renderRoutes(routes)}</Switch>
+          </HashRouter>
         </>
       </ConnectedRouter>
     </PersistGate>
