@@ -8,23 +8,23 @@ self.__precacheManifest = [
     "url": "/ant-design-layoutui/static/js/runtime~main.2bbab2d2.js"
   },
   {
-    "revision": "b2b93e9e480d8dfb369f",
-    "url": "/ant-design-layoutui/static/js/main.6ca9e71f.chunk.js"
+    "revision": "469c1c9fbc57d9fed764",
+    "url": "/ant-design-layoutui/static/js/main.1fffa6e2.chunk.js"
   },
   {
-    "revision": "eb382549addf736a7ca3",
-    "url": "/ant-design-layoutui/static/js/2.0d53b003.chunk.js"
+    "revision": "ead349fed28dc36de876",
+    "url": "/ant-design-layoutui/static/js/2.3e318780.chunk.js"
   },
   {
-    "revision": "b2b93e9e480d8dfb369f",
-    "url": "/ant-design-layoutui/static/css/main.21f2e409.chunk.css"
+    "revision": "469c1c9fbc57d9fed764",
+    "url": "/ant-design-layoutui/static/css/main.732581c5.chunk.css"
   },
   {
-    "revision": "eb382549addf736a7ca3",
+    "revision": "ead349fed28dc36de876",
     "url": "/ant-design-layoutui/static/css/2.fa6efd12.chunk.css"
   },
   {
-    "revision": "7293af17db60b707251c527f72c1396c",
+    "revision": "b7c2d296c46e66296047338ba4d2cb48",
     "url": "/ant-design-layoutui/index.html"
   }
 ];

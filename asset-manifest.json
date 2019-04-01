@@ -1,16 +1,16 @@
 {
-  "main.css": "/ant-design-layoutui/static/css/main.21f2e409.chunk.css",
-  "main.js": "/ant-design-layoutui/static/js/main.6ca9e71f.chunk.js",
-  "main.js.map": "/ant-design-layoutui/static/js/main.6ca9e71f.chunk.js.map",
+  "main.css": "/ant-design-layoutui/static/css/main.732581c5.chunk.css",
+  "main.js": "/ant-design-layoutui/static/js/main.1fffa6e2.chunk.js",
+  "main.js.map": "/ant-design-layoutui/static/js/main.1fffa6e2.chunk.js.map",
   "runtime~main.js": "/ant-design-layoutui/static/js/runtime~main.2bbab2d2.js",
   "runtime~main.js.map": "/ant-design-layoutui/static/js/runtime~main.2bbab2d2.js.map",
   "static/css/2.fa6efd12.chunk.css": "/ant-design-layoutui/static/css/2.fa6efd12.chunk.css",
-  "static/js/2.0d53b003.chunk.js": "/ant-design-layoutui/static/js/2.0d53b003.chunk.js",
-  "static/js/2.0d53b003.chunk.js.map": "/ant-design-layoutui/static/js/2.0d53b003.chunk.js.map",
+  "static/js/2.3e318780.chunk.js": "/ant-design-layoutui/static/js/2.3e318780.chunk.js",
+  "static/js/2.3e318780.chunk.js.map": "/ant-design-layoutui/static/js/2.3e318780.chunk.js.map",
   "index.html": "/ant-design-layoutui/index.html",
-  "precache-manifest.05c0532fd339e4cbeaf86adc0630385b.js": "/ant-design-layoutui/precache-manifest.05c0532fd339e4cbeaf86adc0630385b.js",
+  "precache-manifest.1cda65c0c4b38232c0a7ef74cf1295b5.js": "/ant-design-layoutui/precache-manifest.1cda65c0c4b38232c0a7ef74cf1295b5.js",
   "service-worker.js": "/ant-design-layoutui/service-worker.js",
   "static/css/2.fa6efd12.chunk.css.map": "/ant-design-layoutui/static/css/2.fa6efd12.chunk.css.map",
-  "static/css/main.21f2e409.chunk.css.map": "/ant-design-layoutui/static/css/main.21f2e409.chunk.css.map",
+  "static/css/main.732581c5.chunk.css.map": "/ant-design-layoutui/static/css/main.732581c5.chunk.css.map",
   "static/media/login.scss": "/ant-design-layoutui/static/media/right.d64474a8.png"
 }
