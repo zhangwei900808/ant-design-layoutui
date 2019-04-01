@@ -21,9 +21,9 @@ class Login extends Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <div className="login-container">
-        <img src={LOGIN} alt="" className="img-logo" />
+        {/* <img src={LOGIN} alt="" className="img-logo" /> */}
         <div>
-          <div className="top-title">智慧作业管家</div>
+          <div className="top-title">Ant Design UI</div>
           <Form onSubmit={this.handleSubmit} className="login-form">
             <Form.Item>
               <span className="form-title" />
@@ -31,33 +31,15 @@ class Login extends Component {
             <Form.Item>
               {getFieldDecorator("userName", {
                 rules: [{ required: true, message: "请输入用户名!" }]
-              })(
-                <Input
-                  prefix={
-                    <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
-                  }
-                  placeholder="用户名"
-                />
-              )}
+              })(<Input prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />} placeholder="用户名" />)}
             </Form.Item>
             <Form.Item>
               {getFieldDecorator("password", {
                 rules: [{ required: true, message: "请输入密码!" }]
-              })(
-                <Input.Password
-                  prefix={
-                    <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
-                  }
-                  placeholder="密码"
-                />
-              )}
+              })(<Input.Password prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />} placeholder="密码" />)}
             </Form.Item>
             <Form.Item>
-              <Button
-                type="primary"
-                htmlType="submit"
-                className="login-form-button"
-              >
+              <Button type="primary" htmlType="submit" className="login-form-button">
                 登录
               </Button>
             </Form.Item>

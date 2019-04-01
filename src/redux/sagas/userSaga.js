@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { userTypes } from "../actions/userAction";
-import Apis from "../apis";
+import Apis from "../apis/1.0";
 
 function* fetchData(action) {
   try {
