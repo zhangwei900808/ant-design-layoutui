@@ -4,11 +4,15 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/es/storage";
 import createSagaMiddleware from "redux-saga";
 import logger from "redux-logger";
-import { createBrowserHistory } from "history";
+//createBrowserHistory
+import { createHashHistory } from "history";
 import createRootReducer from "../reducers";
 import rootSaga from "../sagas";
-
-export const history = createBrowserHistory();
+{
+  /* 解决github gh-pages发布必须以Hash浏览否则history模式就会报错问题，
+          如果想使用history模式去掉下面的HashRouter即可 */
+}
+export const history = createHashHistory();
 // create the router history middleware
 const historyRouterMiddleware = routerMiddleware(history);
 // create the saga middleware
@@ -21,17 +25,10 @@ const persistConfig = {
   storage
 };
 
-const persistReducers = persistReducer(
-  persistConfig,
-  createRootReducer(history)
-);
+const persistReducers = persistReducer(persistConfig, createRootReducer(history));
 
 export default function configureStore(preloadedState) {
-  const store = createStore(
-    persistReducers,
-    preloadedState,
-    compose(applyMiddleware(...middleWares))
-  );
+  const store = createStore(persistReducers, preloadedState, compose(applyMiddleware(...middleWares)));
   let persistor = persistStore(store);
   sagaMiddleware.run(rootSaga);
   return { persistor, store };

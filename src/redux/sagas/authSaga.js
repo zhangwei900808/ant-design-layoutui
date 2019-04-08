@@ -1,9 +1,11 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { push } from "connected-react-router";
+import { push, replace } from "connected-react-router";
+import { message } from "antd";
 import authAction, { authTypes } from "../actions/authAction";
 import { layoutPageTypes } from "../actions/layoutPageAction";
-import { message } from "antd";
 import apis from "../apis/1.0";
+import { createHashHistory } from "history";
+const history = createHashHistory();
 
 function strokeItem(token) {
   localStorage.setItem("token", token);
@@ -23,8 +25,11 @@ function* signout(action) {
       keyPath: ["1"]
     }
   });
+
   //跳转到登录页面
-  yield put(push("/login"));
+  // hash 跳转 history.push("/login")
+  // history 跳转 yield put(push('/login'))
+  history.push("/login");
 }
 
 function* fetchData(action) {
