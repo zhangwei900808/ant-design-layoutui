@@ -38,8 +38,8 @@ class MasterPage extends Component {
           <Layout className="mpl-layout">
             <If condition={this.props.side !== null && typeof this.props.side !== "undefined"}>
               <Then>
-                <Sider className="mp-side" theme="light" width="320">
-                  <PageHeader title={this.props.title} subTitle={this.props.subTitle} />
+                <Sider className="mp-side" theme="light" width="280">
+                  <PageHeader className="mp-ph" title={this.props.title} subTitle={this.props.subTitle} />
                   <div className="mp-side-content">{this.props.side}</div>
                 </Sider>
               </Then>
@@ -50,7 +50,7 @@ class MasterPage extends Component {
                   <div className="holder-search">{this.props.search}</div>
                 </Then>
               </If>
-              <div className="holder-content">{this.props.children}</div>
+              <div className={[this.props.side !== null && typeof this.props.side !== "undefined" ? "holder-content-side" : "holder-content"]}>{this.props.children}</div>
             </Content>
           </Layout>
         </Layout>
