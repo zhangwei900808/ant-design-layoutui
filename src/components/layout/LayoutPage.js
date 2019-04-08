@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
 import { renderRoutes, matchRoutes } from "react-router-config";
@@ -7,7 +6,8 @@ import { Layout, Menu, Icon, Avatar, Dropdown } from "antd";
 import baseConfig from "../../config/base.config";
 import routerConfig from "../../config/router.config";
 import BreadCrumbPage from "./BreadCrumbPage";
-import sideMenuAction from "../../redux/actions/sideMenuAction";
+import layoutPageAction from "../../redux/actions/layoutPageAction";
+import authAction from "../../redux/actions/authAction";
 import "./layoutPage.scss";
 
 const { Header, Content, Sider } = Layout;
@@ -15,14 +15,11 @@ const SubMenu = Menu.SubMenu;
 
 @withRouter
 @connect(
-  ({ sideMenuReducer }) => ({ sideMenuReducer }),
-  dispatch =>
-    bindActionCreators(
-      {
-        saveMenuIndex: sideMenuAction.saveSideMenuIndex
-      },
-      dispatch
-    )
+  ({ layoutPageReducer }) => ({ layoutPageReducer }),
+  {
+    saveMenuIndex: layoutPageAction.saveMenuIndex,
+    signOut: authAction.signOut
+  }
 )
 class LayoutPage extends Component {
   constructor(props) {
@@ -39,16 +36,14 @@ class LayoutPage extends Component {
     });
   };
 
+  clickDropdownMenu = ({ item, key, keyPath }) => {
+    if (key === "signout") {
+      this.props.signOut();
+    }
+  };
+
   clickSidebarMenu = ({ item, key, keyPath }) => {
     this.props.saveMenuIndex(keyPath);
-  };
-  clickDropdownMenu = ({ item, key, keyPath }) => {
-    this.props.history.push({
-      pathname: "/work/monitor/add",
-      state: {
-        key: key
-      }
-    });
   };
 
   componentDidMount() {
@@ -62,7 +57,7 @@ class LayoutPage extends Component {
   //   console.log("routes", routes);
   // }
   render() {
-    const { route, sideMenuReducer } = this.props;
+    const { route, layoutPageReducer } = this.props;
     // console.log('route', route);
 
     const newMenu = routerConfig.map(routeData =>
@@ -93,24 +88,16 @@ class LayoutPage extends Component {
     );
 
     const ddMenu = (
-      <Menu style={{ lineHeight: "63px", fontSize: "14px" }}>
-        <Menu.Item key="3-1-1" style={{ width: "150px" }}>
-          <NavLink to="/">
-            <Icon type="user" />
-            <span style={{ marginLeft: 8 }}>个人信息</span>
-          </NavLink>
-        </Menu.Item>
+      <Menu onClick={this.clickDropdownMenu} style={{ lineHeight: "63px", fontSize: "14px" }}>
         <Menu.Item key="dm-setting" style={{ width: "150px" }}>
           <NavLink to="/">
             <Icon type="setting" />
             <span style={{ marginLeft: 8 }}>设置</span>
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="0" style={{ width: "150px" }}>
-          <NavLink to="/login">
-            <Icon type="logout" />
-            <span style={{ marginLeft: 8 }}>退出登录</span>
-          </NavLink>
+        <Menu.Item key="signout" style={{ width: "150px" }}>
+          <Icon type="logout" />
+          <span>退出登录</span>
         </Menu.Item>
       </Menu>
     );
@@ -124,8 +111,8 @@ class LayoutPage extends Component {
           </div>
           <Menu
             theme="dark"
-            defaultSelectedKeys={[sideMenuReducer.index]}
-            defaultOpenKeys={[sideMenuReducer.subIndex]}
+            defaultSelectedKeys={[layoutPageReducer.index]}
+            defaultOpenKeys={[layoutPageReducer.subIndex]}
             mode="inline"
             className="sider-menu-container"
             inlineCollapsed={this.state.collapsed}
