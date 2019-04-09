@@ -3,7 +3,8 @@ import { layoutPageTypes } from "../actions/layoutPageAction";
 
 const initState = {
   index: "1",
-  subIndex: ""
+  subIndex: "",
+  collapsed: false
 };
 
 const layoutPageReducer = handleActions(
@@ -20,6 +21,12 @@ const layoutPageReducer = handleActions(
         index,
         subIndex
       };
+    },
+    [layoutPageTypes.SAVE_MENU_COLLAPSED]: (state, action) => {
+      const { collapsed } = action.payload;
+      return Object.assign({}, state, {
+        collapsed
+      });
     }
   },
   initState

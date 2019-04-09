@@ -25,6 +25,12 @@ function* signout(action) {
       keyPath: ["1"]
     }
   });
+  yield put({
+    type: layoutPageTypes.SAVE_MENU_COLLAPSED,
+    payload: {
+      collapsed: false
+    }
+  });
 
   //跳转到登录页面
   // hash 跳转 history.push("/login")

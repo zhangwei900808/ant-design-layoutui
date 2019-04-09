@@ -18,6 +18,7 @@ const SubMenu = Menu.SubMenu;
   ({ layoutPageReducer }) => ({ layoutPageReducer }),
   {
     saveMenuIndex: layoutPageAction.saveMenuIndex,
+    saveMenuCollapsed: layoutPageAction.saveMenuCollapsed,
     signOut: authAction.signOut
   }
 )
@@ -25,15 +26,11 @@ class LayoutPage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      collapsed: false
-    };
+    this.state = {};
   }
 
   toggle = () => {
-    this.setState({
-      collapsed: !this.state.collapsed
-    });
+    this.props.saveMenuCollapsed(!this.props.layoutPageReducer.collapsed);
   };
 
   clickDropdownMenu = ({ item, key, keyPath }) => {
@@ -104,10 +101,10 @@ class LayoutPage extends Component {
 
     return (
       <Layout className="layout-container">
-        <Sider theme="dark" trigger={null} collapsible collapsed={this.state.collapsed} width={250} breakpoint="lg" className="sider-container">
+        <Sider theme="dark" trigger={null} collapsible collapsed={layoutPageReducer.collapsed} width={250} breakpoint="lg" className="sider-container">
           <div className="logo">
             <img src={baseConfig.logo} width="32" alt="" />
-            {!this.state.collapsed ? <span className="title">{baseConfig.company}</span> : ""}
+            {!layoutPageReducer.collapsed ? <span className="title">{baseConfig.company}</span> : ""}
           </div>
           <Menu
             theme="dark"
@@ -115,7 +112,7 @@ class LayoutPage extends Component {
             defaultOpenKeys={[layoutPageReducer.subIndex]}
             mode="inline"
             className="sider-menu-container"
-            inlineCollapsed={this.state.collapsed}
+            inlineCollapsed={layoutPageReducer.collapsed}
             onClick={this.clickSidebarMenu}
           >
             {newMenu}
@@ -124,7 +121,7 @@ class LayoutPage extends Component {
         <Layout className="layout-page-right-container">
           <Header className="right-header">
             <div className="right-header-left">
-              <Icon className="trigger" type={this.state.collapsed ? "menu-unfold" : "menu-fold"} onClick={this.toggle} />
+              <Icon className="trigger" type={layoutPageReducer.collapsed ? "menu-unfold" : "menu-fold"} onClick={this.toggle} />
               <span>{baseConfig.title}</span>
             </div>
             <div className="right-header-right">
