@@ -8,23 +8,23 @@ self.__precacheManifest = [
     "url": "/ant-design-layoutui/static/js/runtime~main.2bbab2d2.js"
   },
   {
-    "revision": "3789b61a6c012589129d",
-    "url": "/ant-design-layoutui/static/js/main.110f5a59.chunk.js"
+    "revision": "c111ae370d49bf96c039",
+    "url": "/ant-design-layoutui/static/js/main.271b752b.chunk.js"
   },
   {
-    "revision": "6ba74c32c78f0f45f71d",
-    "url": "/ant-design-layoutui/static/js/2.93c9aea2.chunk.js"
+    "revision": "1d08dd3d97249913dbb9",
+    "url": "/ant-design-layoutui/static/js/2.2719c859.chunk.js"
   },
   {
-    "revision": "3789b61a6c012589129d",
+    "revision": "c111ae370d49bf96c039",
     "url": "/ant-design-layoutui/static/css/main.b5e7d20d.chunk.css"
   },
   {
-    "revision": "6ba74c32c78f0f45f71d",
+    "revision": "1d08dd3d97249913dbb9",
     "url": "/ant-design-layoutui/static/css/2.42cc3663.chunk.css"
   },
   {
-    "revision": "e9d98f0ce92643db47582c5666d0c30f",
+    "revision": "8906e89b203319825b0858476ce73fc5",
     "url": "/ant-design-layoutui/index.html"
   }
 ];
